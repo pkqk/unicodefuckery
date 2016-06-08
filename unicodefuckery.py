@@ -98,6 +98,34 @@ to_monospace = dict()
 to_monospace.update(zip(range(ord('a'), ord('z')+1),range(0x1d68a, 0x1d6a4+1)))
 to_monospace.update(zip(range(ord('A'), ord('Z')+1),range(0x1d670, 0x1d689+1)))
 
+to_smallcaps = dict()
+to_smallcaps[ord('a')] = 0x1d00
+to_smallcaps[ord('b')] = 0x299
+to_smallcaps[ord('c')] = 0x1d04
+to_smallcaps[ord('d')] = 0x1d05
+to_smallcaps[ord('e')] = 0x1d07
+to_smallcaps[ord('f')] = 0xa730
+to_smallcaps[ord('g')] = 0x262
+to_smallcaps[ord('h')] = 0x29c
+to_smallcaps[ord('i')] = 0x26a
+to_smallcaps[ord('j')] = 0x1d0a
+to_smallcaps[ord('k')] = 0x1d0b
+to_smallcaps[ord('l')] = 0x29f
+to_smallcaps[ord('m')] = 0x1d0d
+to_smallcaps[ord('n')] = 0x274
+to_smallcaps[ord('o')] = 0x1d0f
+to_smallcaps[ord('p')] = 0x1d18
+#to_smallcaps[ord('q')] = 'q'
+to_smallcaps[ord('r')] = 0x280
+to_smallcaps[ord('s')] = 0xa731
+to_smallcaps[ord('t')] = 0x1d1b
+to_smallcaps[ord('u')] = 0x1d1c
+to_smallcaps[ord('v')] = 0x1d20
+to_smallcaps[ord('w')] = 0x1d21
+#to_smallcaps[ord('x')] = 'x'
+to_smallcaps[ord('y')] = 0x28f
+to_smallcaps[ord('z')] = 0x1d22
+
 # http://en.wikipedia.org/wiki/Combining_character
 combining = []
 combining.extend(range(0x300, 0x36f+1)) # Combining Diacritical Marks
@@ -133,6 +161,7 @@ fuckery = collections.OrderedDict([
     ('sans_italic', lambda line: line.translate(to_sans_italic)),
     ('sans_bold_italic', lambda line: line.translate(to_sans_bold_italic)),
     ('monospace', lambda line: line.translate(to_monospace)),
+    ('smallcaps', lambda line: line.translate(to_smallcaps)),
     ('umlaut', make_combining(lambda:["\u0308"])),
     ('combine1', make_combining(lambda: random.sample(combining,1))),
     ('combine2', make_combining(lambda: random.sample(combining,2))),
